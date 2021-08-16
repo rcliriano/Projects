@@ -1,0 +1,40 @@
+﻿<Properties StartupConfiguration="{70CF6917-2605-4AE7-B9A2-AC34F87F97FA}|Default">
+  <MonoDevelop.Ide.ItemProperties.Projects PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+    <Files>
+      <File FileName="Program.cs" Line="9" Column="1" />
+      <File FileName="Commands/CitySearch.cs" />
+      <File FileName="EFCore/Data/ProjectsContext.cs" />
+      <File FileName="Services/CitySearchService.cs" />
+      <File FileName="Models/CitySearchModel.cs" />
+      <File FileName="Helper/RestAPIClient.cs" />
+      <File FileName="EFCore/Models/CitySearchZip.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Projects" expanded="True">
+            <Node name="Projects" expanded="True">
+              <Node name="Commands" expanded="True" />
+              <Node name="EFCore" expanded="True">
+                <Node name="Data" expanded="True" />
+                <Node name="Models" expanded="True" />
+              </Node>
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint enabled="false" file="/Volumes/Tier 1/Projects/Services/CitySearchService.cs" relfile="Services/CitySearchService.cs" line="51" column="1" />
+      <Breakpoint enabled="false" file="/Volumes/Tier 1/Projects/Services/CitySearchService.cs" relfile="Services/CitySearchService.cs" line="44" column="1" />
+      <Breakpoint enabled="false" file="/Volumes/Tier 1/Projects/Services/CitySearchService.cs" relfile="Services/CitySearchService.cs" line="29" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

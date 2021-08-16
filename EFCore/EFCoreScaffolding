@@ -1,0 +1,10 @@
+
+--Add secret connection string
+dotnet user-secrets init
+dotnet user-secrets set ConnectionStrings:Projects "Server=127.0.0.1;Database=Projects; User Id=sa; Password=dehu4eP3; Trusted_Connection=false; MultipleActiveResultSets=true;"
+
+--Initial Scaffold
+dotnet ef dbcontext scaffold "Server=127.0.0.1;Database=Projects; User Id=sa; Password=dehu4eP3; Trusted_Connection=false; MultipleActiveResultSets=true;" Microsoft.EntityFrameworkCore.SqlServer --context-dir EFCore/Data -c ProjectsContext --output-dir EFCore/Models
+
+--Update database context
+dotnet ef database update --connection "Server=127.0.0.1;Database=Projects; User Id=sa; Password=dehu4eP3; Trusted_Connection=false; MultipleActiveResultSets=true;" 
