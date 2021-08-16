@@ -1,14 +1,11 @@
 ﻿<Properties StartupConfiguration="{70CF6917-2605-4AE7-B9A2-AC34F87F97FA}|Default">
   <MonoDevelop.Ide.ItemProperties.Projects PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="appsettings.json">
     <Files>
-      <File FileName="Program.cs" Line="9" Column="1" />
-      <File FileName="Commands/CitySearch.cs" />
-      <File FileName="EFCore/Data/ProjectsContext.cs" />
-      <File FileName="Services/CitySearchService.cs" />
-      <File FileName="Models/CitySearchModel.cs" />
-      <File FileName="Helper/RestAPIClient.cs" />
-      <File FileName="EFCore/Models/CitySearchZip.cs" />
+      <File FileName="Commands/CitySearch.cs" Line="48" Column="6" />
+      <File FileName="Program.cs" Line="68" Column="1" />
+      <File FileName="Services/CitySearchService.cs" Line="45" Column="13" />
+      <File FileName="appsettings.json" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,11 +13,10 @@
           <Node name="Projects" expanded="True">
             <Node name="Projects" expanded="True">
               <Node name="Commands" expanded="True" />
-              <Node name="EFCore" expanded="True">
-                <Node name="Data" expanded="True" />
-                <Node name="Models" expanded="True" />
-              </Node>
-              <Node name="Program.cs" selected="True" />
+              <Node name="EFCore" expanded="True" />
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="appsettings.json" selected="True" />
             </Node>
           </Node>
         </State>
@@ -31,9 +27,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint enabled="false" file="/Volumes/Tier 1/Projects/Services/CitySearchService.cs" relfile="Services/CitySearchService.cs" line="51" column="1" />
-      <Breakpoint enabled="false" file="/Volumes/Tier 1/Projects/Services/CitySearchService.cs" relfile="Services/CitySearchService.cs" line="44" column="1" />
-      <Breakpoint enabled="false" file="/Volumes/Tier 1/Projects/Services/CitySearchService.cs" relfile="Services/CitySearchService.cs" line="29" column="1" />
+      <Breakpoint enabled="false" file="/Volumes/Tier 1/Projects/Services/CitySearchService.cs" relfile="Services/CitySearchService.cs" line="30" column="1" />
+      <Breakpoint file="/Volumes/Tier 1/Projects/Services/CitySearchService.cs" relfile="Services/CitySearchService.cs" line="55" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

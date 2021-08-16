@@ -10,19 +10,20 @@ using Projects.EFCore.Data;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace Projects
 {
 
     [Command (Name = "Projects", Description = "Invoke AccuWeather APIs")]
-    [Subcommand(
-        typeof(CitySearch))
-        ]
+    [Subcommand(typeof(CitySearch))]
+
+    
     public class Program : CommandBase
          
     {
-        
+      
+
         public Program(IConfiguration config) : base(config)
         {
             
@@ -66,10 +67,6 @@ namespace Projects
 
         }
 
-       
-           
-
-            
 
         protected override void OnExecuteAsync(CommandLineApplication app)
         {

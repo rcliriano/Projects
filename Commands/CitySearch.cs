@@ -8,19 +8,24 @@ using Projects.EFCore.Data;
 using Projects.EFCore.Models;
 using Newtonsoft.Json;
 using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 namespace Projects.Commands
 {
 
-    [Command(Name ="CitySearch", Description = "Pull city details from AccuWeather API")]
+    [Command(Name ="CitySearch", Description ="Search for city using Zip Code", AllowArgumentSeparator = true)]
     
-     class CitySearch: CommandBase
+
+    class CitySearch : CommandBase
     {
+        
+
+       
         public CitySearchService service = null;
 
         private readonly ProjectsContext dbContext;
 
-
+      
 
         public CitySearch(IConfiguration config, CitySearchService _service, ProjectsContext _dbContext) : base(config)
         {
@@ -40,11 +45,14 @@ namespace Projects.Commands
         /// Runs the AccuWeather API and outputs the result of the citysearchAPI
         /// </summary>
         /// <param name="app"></param>
-       
-
+     
+        [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
+        [Required]
+        public string CityZipCode { get; }
         protected override  void OnExecuteAsync(CommandLineApplication app)
         {
-            List<RootObject> cityResults =  service.GetCitySearchResponseAsync();
+            
+            List<RootObject> cityResults =  service.GetCitySearchResponseAsync(CityZipCode);
 
             
         
@@ -68,11 +76,6 @@ namespace Projects.Commands
 
                 }
             
-          
-         
-                
-            
-                
             
             return;
         }

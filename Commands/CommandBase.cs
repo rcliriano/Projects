@@ -7,8 +7,12 @@ using Microsoft.Extensions.Hosting;
 namespace Projects.Commands
 {
     [HelpOption("-h|--help")]
+   
+
     public  abstract class CommandBase
     {
+       
+
         protected IConfiguration _config;
         
 
@@ -25,7 +29,7 @@ namespace Projects.Commands
         {
             
             Console.WriteLine(String.Concat("API URL = ", _config.GetSection("AccuWeatherAPIs")["key"]));
-            Console.WriteLine("Project CitySearch");
+            Console.WriteLine("Project CitySearch --ZipCode 33545");
             app.ShowHelp(true);
             
 
