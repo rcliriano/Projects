@@ -29,6 +29,8 @@ namespace Projects.Commands
         {
             
             Console.WriteLine(String.Concat("API URL = ", _config.GetSection("AccuWeatherAPIs")["key"]));
+            Console.WriteLine("Project Forecast --City Miami --State FL --Country US --Days 1");
+            Console.WriteLine("Project Forecast --ZipCode --Days 1");
             Console.WriteLine("Project CitySearch --ZipCode 33545");
             app.ShowHelp(true);
             

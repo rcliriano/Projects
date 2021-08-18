@@ -2,7 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <StartAction>Project</StartAction>
-    <StartArguments>"CitySearch" "--ZipCode" "07644"</StartArguments>
+    <StartArguments>"CitySearch" "--ZipCode" "10453"</StartArguments>
     <StartWorkingDirectory></StartWorkingDirectory>
     <ExternalConsole>true</ExternalConsole>
     <ConsolePause>true</ConsolePause>

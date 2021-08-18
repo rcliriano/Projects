@@ -18,12 +18,10 @@ namespace Projects.EFCore.Data
         {
         }
 
-        public virtual DbSet<CitySearchZip> CitySearchZip { get; set; }
+        public virtual DbSet<CitySearchZip> CitySearchZips { get; set; }
+        public virtual DbSet<CitySearchZipView> CitySearchZipViews { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-          
-        }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,6 +49,41 @@ namespace Projects.EFCore.Data
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasDefaultValueSql("('Live')");
+            });
+
+            modelBuilder.Entity<CitySearchZipView>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("CitySearchZip_View");
+
+                entity.Property(e => e.City).HasMaxLength(4000);
+
+                entity.Property(e => e.CityKey).HasMaxLength(4000);
+
+                entity.Property(e => e.CountryCode).HasMaxLength(4000);
+
+                entity.Property(e => e.GeoPositionLatitude).HasMaxLength(4000);
+
+                entity.Property(e => e.GeoPositionLongitude).HasMaxLength(4000);
+
+                entity.Property(e => e.RecordEntryDate).HasColumnType("datetime");
+
+                entity.Property(e => e.RecordId)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("RecordID");
+
+                entity.Property(e => e.RecordLastDate).HasColumnType("datetime");
+
+                entity.Property(e => e.RecordStatus)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.RegionCode).HasMaxLength(4000);
+
+                entity.Property(e => e.StateCode).HasMaxLength(4000);
+
+                entity.Property(e => e.ZipCode).HasMaxLength(4000);
             });
 
             OnModelCreatingPartial(modelBuilder);

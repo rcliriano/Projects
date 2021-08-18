@@ -9,6 +9,7 @@ using Projects.EFCore.Models;
 using Newtonsoft.Json;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Projects.Commands
 {
@@ -51,32 +52,51 @@ namespace Projects.Commands
         public string CityZipCode { get; }
         protected override  void OnExecuteAsync(CommandLineApplication app)
         {
-            
-            List<RootObject> cityResults =  service.GetCitySearchResponseAsync(CityZipCode);
 
-            
-        
-                foreach (RootObject cityResult in cityResults)
+            using (dbContext)
+            {
+                var cityZipCode = dbContext.CitySearchZipViews
+                        .Where(b => b.ZipCode == CityZipCode);
+
+                if ((cityZipCode.Count() > 0))
+                {
+                    cityZipCode.ToString();
+                   
+                    Console.WriteLine(String.Concat("Zip code ", CityZipCode, " already found."));
+                }
+
+                else
                 {
 
-            
-                 using (dbContext) {
-                    var cityZip = new CitySearchZip();
-                    cityZip.RecordEntryDate = DateTime.UtcNow;
-                    cityZip.RecordLastDate = DateTime.UtcNow;
-                    cityZip.RecordStatus = "Live";
-                    cityZip.Json = JsonConvert.SerializeObject(cityResult);
-                    dbContext.CitySearchZip.Add(cityZip);
-                    dbContext.SaveChanges();
+                    List<RootObject> cityResults = service.GetCitySearchResponseAsync(CityZipCode);
 
 
+                    Console.WriteLine(String.Concat("Searching zip code ", CityZipCode));
+                    foreach (RootObject cityResult in cityResults)
+                    {
 
+
+                        using (dbContext)
+                        {
+                            var cityZip = new CitySearchZip();
+                            cityZip.RecordEntryDate = DateTime.UtcNow;
+                            cityZip.RecordLastDate = DateTime.UtcNow;
+                            cityZip.RecordStatus = "Live";
+                            cityZip.Json = JsonConvert.SerializeObject(cityResult);
+                            dbContext.CitySearchZips.Add(cityZip);
+                            dbContext.SaveChanges();
+                            Console.WriteLine(String.Concat("Zip code ", CityZipCode, "found and stored in the database."));
+
+
+                        }
+                       
+
+                    }
                 }
-                    //dbContext.CitySearches.Add(JsonConvert.SerializeObject(cityResult));
 
-                }
-            
-            
+            }
+
+
             return;
         }
     }
