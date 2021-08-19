@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using Projects.EFCore.Data;
 using Projects.EFCore.Models;
 using Newtonsoft.Json;
-using System.IO;
+using Projects.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
@@ -20,15 +20,9 @@ namespace Projects.Commands
     class CitySearch : CommandBase
     {
         
-
-       
         public CitySearchService service = null;
 
-        private readonly ProjectsContext dbContext;
-
-      
-
-        public CitySearch(IConfiguration config, CitySearchService _service, ProjectsContext _dbContext) : base(config)
+        public CitySearch(IConfiguration config, CitySearchService _service) : base(config)
         {
 
             if(_service !=null)
@@ -36,68 +30,39 @@ namespace Projects.Commands
                 service = _service;
 
             }
-            if (_dbContext != null)
-            {
-                dbContext = _dbContext;
-            }
-
         }
-        /// <summary>
-        /// Runs the AccuWeather API and outputs the result of the citysearchAPI
-        /// </summary>
-        /// <param name="app"></param>
-     
-        [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
+        
+    /// <summary>
+    /// Runs the AccuWeather API and outputs the result of the citysearchAPI
+    /// </summary>
+    /// <param name="app"></param>
+
+    [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
         [Required]
         public string CityZipCode { get; }
-        protected override  void OnExecuteAsync(CommandLineApplication app)
+        protected override void OnExecuteAsync(CommandLineApplication app)
         {
+           
 
-            using (dbContext)
-            {
-                var cityZipCode = dbContext.CitySearchZipViews
-                        .Where(b => b.ZipCode == CityZipCode);
+        //Invoke AccuWeather API to GET the CityDetails
+        PostDTOModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
+        String m = (String.Concat("CityKey", cityResult.CityKey,"\n City:", cityResult.City, "\n State:", cityResult.StateCode, "\n ZipCode:", cityResult.ZipCode, "\n Country:", cityResult.CountryCode));
 
-                if ((cityZipCode.Count() > 0))
-                {
-                    cityZipCode.ToString();
-                   
-                    Console.WriteLine(String.Concat("Zip code ", CityZipCode, " already found."));
-                }
+        Console.WriteLine(m);
+               
+                
+            
 
-                else
-                {
+        return;
 
-                    List<RootObject> cityResults = service.GetCitySearchResponseAsync(CityZipCode);
-
-
-                    Console.WriteLine(String.Concat("Searching zip code ", CityZipCode));
-                    foreach (RootObject cityResult in cityResults)
-                    {
-
-
-                        using (dbContext)
-                        {
-                            var cityZip = new CitySearchZip();
-                            cityZip.RecordEntryDate = DateTime.UtcNow;
-                            cityZip.RecordLastDate = DateTime.UtcNow;
-                            cityZip.RecordStatus = "Live";
-                            cityZip.Json = JsonConvert.SerializeObject(cityResult);
-                            dbContext.CitySearchZips.Add(cityZip);
-                            dbContext.SaveChanges();
-                            Console.WriteLine(String.Concat("Zip code ", CityZipCode, "found and stored in the database."));
-
-
-                        }
-                       
-
-                    }
-                }
-
-            }
-
-
-            return;
         }
+
+        
+
+
     }
+
+
+
+        
 }

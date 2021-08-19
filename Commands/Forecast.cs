@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Projects.Models;
 
 namespace Projects.Commands
 {
@@ -23,24 +24,29 @@ namespace Projects.Commands
 
 
 
-        public ForecastService service = null;
-      
+        public ForecastService forecastService = null;
+        public CitySearchService citySearchService = null;
         private readonly ProjectsContext dbContext;
-
-
-
-        public Forecast(IConfiguration config, ForecastService _service, ProjectsContext _dbContext) : base(config)
+       
+        public Forecast(IConfiguration config, ForecastService _forecastService, CitySearchService _citySearchService, ProjectsContext _dbContext) : base(config)
         {
 
-            if (_service != null)
+            if (_forecastService != null)
             {
-                service = _service;
+                forecastService = _forecastService;
 
             }
             if (_dbContext != null)
             {
                 dbContext = _dbContext;
             }
+            if(_citySearchService != null)
+            {
+
+                citySearchService = _citySearchService;
+
+            }
+
 
         }
         /// <summary>
@@ -48,45 +54,25 @@ namespace Projects.Commands
         /// </summary>
         /// <param name="app"></param>
 
-        [Option("-C|--City", Description = "City to get Forecast in days")]
-        public string city {get;}
+    
+        [Required]
+        [Option("-ZC|--ZipCode", Description = "Get Forecast Details for the entered zipcode")]
+        public string cityZipCode { get; }
 
-        [Option("-S|--State", Description = "State to get Forecast in days")]
-        public string state { get; }
-
-        [Option("-C|--Country", Description = "State to get Forecast in days")]
-        public string country { get; }
-
-        [Option("-ZC|--ZipCode", Description = "State to get Forecast in days")]
-        public string zipCode { get; }
-
+        [Required]
         [Option("-D|--Days", Description = "Get Forecast in days")]
         [AllowedValues("1","5")]
-        [Required]
         public string days { get; }
 
         protected override  void OnExecuteAsync(CommandLineApplication app)
         {
-            using (dbContext)
-            {
 
-                if (zipCode.Count() > 0)
-                {
-                    var cityKey = dbContext.CitySearchZipViews
-                    .Where(b => b.ZipCode == zipCode);
-                }
-                else if (city.Count() > 0 && state.Count() > 0 && country.Count() > 0)
-                {
-                    var cityKey = dbContext.CitySearchZipViews
-                        .Where(b => b.City == city && b.StateCode == state && b.CountryCode == country);
-                }
+            //Gets from CitySearchService the CityDetails.
+            PostDTOModel cityDetails = citySearchService.GetCitySearchResponseAsync(cityZipCode);
 
+            ForecastRootObject forecast = forecastService.GetForecastAsync(cityDetails.CityKey, days);
 
-            }
-
-
-
-
+            
 
 
             return;

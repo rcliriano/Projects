@@ -49,12 +49,12 @@ namespace Projects
                   })
                     .ConfigureServices((context, services) =>
                     {
-                        services.AddScoped<CitySearchService>(provider => new CitySearchService(context.Configuration));
+                        
                         services.AddScoped<ForecastService>(provider => new ForecastService(context.Configuration));
 
 
                         services.AddDbContext<ProjectsContext>(options => options.UseSqlServer(context.Configuration.GetConnectionString("ProjectsDB")));
-
+                        services.AddScoped<CitySearchService>(provider => new CitySearchService(context.Configuration));
 
 
 
