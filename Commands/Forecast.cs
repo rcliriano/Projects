@@ -54,11 +54,12 @@ namespace Projects.Commands
         /// </summary>
         /// <param name="app"></param>
 
-    
+        //should add ErrorMessage Attribute to the "Required" data annotation 
         [Required]
         [Option("-ZC|--ZipCode", Description = "Get Forecast Details for the entered zipcode")]
         public string cityZipCode { get; }
 
+        //should add ErrorMessage Attribute to the "Required" data annotation -NB
         [Required]
         [Option("-D|--Days", Description = "Get Forecast in days")]
         [AllowedValues("1","5")]
