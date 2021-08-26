@@ -41,8 +41,22 @@ namespace Projects.Services
             string key = serviceConfigurations.GetValue<string>("key");
             string baseAddress = serviceConfigurations.GetValue<string>("baseAddress");
             string version = serviceConfigurations.GetSection("forecast").GetValue<string>("version");
+            
+            /*
+             * uri is typically refered to as the whole request. so baseaddress/apiaddress?parameters
+             * instead of using string.Concat you can store the api address as /forecasts/{0}/daily/{1}day/{2} and use string.format to replace the {x} values.
+             * -NB
+             */
             string uri = string.Concat("forecasts/", version, "/daily/", days, "day/");
-
+            /*
+             * why duplicate variable on line 59?
+             * parameters should be anything after the ? in the uri. 
+             * EX: url = http://dataservice.accuweather.com/forecasts/{version}/daily/{days}day/{cityCode}
+             * parameters = ?apikey={key}
+             * uri = http://dataservice.accuweather.com//forecasts/{version}/daily/{days}day/{cityCode}?apikey={key}
+             * can use string interpolation to make parameters.
+             * -NB
+             */
             string apiAddress = baseAddress;
             string parameters = String.Concat("/", uri, cityCode, "?apikey=", key);
 
