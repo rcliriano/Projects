@@ -32,28 +32,31 @@ namespace Projects.Commands
             }
         }
         
-    /// <summary>
-    /// Runs the AccuWeather API and outputs the result of the citysearchAPI
-    /// </summary>
-    /// <param name="app"></param>
+        /// <summary>
+        /// Runs the AccuWeather API and outputs the result of the citysearchAPI
+        /// </summary>
+        /// <param name="app"></param>
+        [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
 
-    [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
+        //should add the "ErrorMessage" attribute to the "Required" data annotation. - NB
         [Required]
         public string CityZipCode { get; }
         protected override void OnExecuteAsync(CommandLineApplication app)
         {
            
 
-        //Invoke AccuWeather API to GET the CityDetails
-        PostDTOCityDetailsModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
-        String m = (String.Concat("CityKey", cityResult.CityKey,"\n City:", cityResult.City, "\n State:", cityResult.StateCode, "\n ZipCode:", cityResult.ZipCode, "\n Country:", cityResult.CountryCode));
+            //Invoke AccuWeather API to GET the CityDetails
+            PostDTOModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
 
-        Console.WriteLine(m);
+            //Try using string interpolation to concat combine strings. - NB
+            String m = (String.Concat("CityKey", cityResult.CityKey,"\n City:", cityResult.City, "\n State:", cityResult.StateCode, "\n ZipCode:", cityResult.ZipCode, "\n Country:", cityResult.CountryCode));
+
+            Console.WriteLine(m);
                
                 
             
 
-        return;
+            return;
 
         }
 

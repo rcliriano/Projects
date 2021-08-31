@@ -39,17 +39,24 @@ namespace Projects.Services
 
         }
 
-        public PostDTOCityDetailsModel GetCitySearchResponseAsync(string cityZipCode)
+        /// <summary>
+        /// if you do "///" above a function then it will auto generate the documentation structure and will show up when you hover over the method when called from another class.
+        /// Hover over GetForecastAsync in line 74 in Forecast.cs to see.
+        /// -NB
+        /// </summary>
+        /// <param name="cityZipCode">The Zipcode of the city being requested</param>
+        /// <returns>Accuweathers API details on the city requested</returns>
+        public PostDTOModel GetCitySearchResponseAsync(string cityZipCode)
         {
 
             //Check if CityDetails exist in DB
-            PostDTOCityDetailsModel cityDetails = new PostDTOCityDetailsModel();
+            PostDTOModel cityDetails = new PostDTOModel();
 
             cityDetails = GetCityDetails(cityZipCode);
 
 
             //Checks if city exist in DB...
-            if (cityDetails.CityKey is  null)
+            if (cityDetails.CityKey.Count() == 0)
             {
                 //city doesn't exist then invoke Accuweather API
                 List<RootObject> cityResults = new List<RootObject>();
@@ -57,9 +64,25 @@ namespace Projects.Services
                 string key = serviceConfigurations.GetValue<string>("key");
                 string baseAddress = serviceConfigurations.GetValue<string>("baseAddress");
                 string version = serviceConfigurations.GetSection("locations").GetValue<string>("version");
+
+
+                /*
+                 * should store CitySearch in its own variable
+                 * can store the citysearch apiaddress as /locations/{0}/cities/US/search then use string.Format to input values
+                 * -NB
+                 */
                 string uri = string.Concat("locations/", version, serviceConfigurations.GetSection("locations").GetValue<string>("CitySearch"));
 
+                //why duplicate variable? - NB
                 string apiAddress = baseAddress;
+
+                /*
+                 * can use string interpolation to make parameters
+                 * parameters should be anything after the ?. 
+                 * EX: apiAddress = http://dataservice.accuweather.com/cities/US/search
+                 * parameters = ?apikey=<key>&q=<zipcode> 
+                 * -NB
+                 */
                 string parameters = String.Concat("/", uri, "apikey=", key, "&q=", cityZipCode, "\"");
 
                 //string apiAddress = String.Concat("/", uri, "?", "apikey=", key, "&q=Tampa&alias=Florida");
@@ -93,17 +116,17 @@ namespace Projects.Services
 
 
         }
-        public PostDTOCityDetailsModel GetCityDetails(string CityZipCode)
+        public PostDTOModel GetCityDetails(string CityZipCode)
         {
 
-            PostDTOCityDetailsModel result = new PostDTOCityDetailsModel();
+            PostDTOModel result = new PostDTOModel();
 
             using (ProjectsContext dbContext = new ProjectsContext(new DbContextOptionsBuilder<ProjectsContext>().UseSqlServer(ProjectsConnectionString).Options))
             {
                 {
                     var cityDetails = dbContext.CitySearchZipViews
                             .Where(b => b.ZipCode == CityZipCode)
-                            .Select(p => new PostDTOCityDetailsModel
+                            .Select(p => new PostDTOModel
                             {
                                 CityKey = p.CityKey
                                 ,
@@ -116,6 +139,7 @@ namespace Projects.Services
                                 ZipCode = p.ZipCode
                             });
 
+                    //should only be grabbing one city per zipcode. No need for a foreach
                     foreach (var cityDetail in cityDetails)
                     {
                         if ((cityDetail.CityKey.Count() > 0))
