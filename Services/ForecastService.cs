@@ -26,8 +26,6 @@ namespace Projects.Services
 
                 serviceConfigurations = _configuration.GetSection("AccuWeatherAPIs");
                 ProjectsConnectionString = configuration.GetConnectionString("ProjectsDB");
-
-
             }
 
 
@@ -46,20 +44,25 @@ namespace Projects.Services
             string apiAddress = baseAddress;
             string parameters = String.Concat("/", uri, cityCode, "?apikey=", key);
 
-            forecastResults = GetSingleRestAPIClient<ForecastRootObject>(apiAddress, parameters);
+            if(days == "1") { 
+                forecastResults = GetSingleRestAPIClient<ForecastRootObject>(apiAddress, parameters);
 
-            using (ProjectsContext dbContext = new ProjectsContext(new DbContextOptionsBuilder<ProjectsContext>().UseSqlServer(ProjectsConnectionString).Options))
-            {
-                var forecastResult = new CityForecast();
-                forecastResult.RecordEntryDate = DateTime.UtcNow;
-                forecastResult.RecordLastDate = DateTime.UtcNow;
-                forecastResult.RecordStatus = "Live";
-                forecastResult.Json = JsonConvert.SerializeObject(forecastResults);
-                dbContext.CityForecasts.Add(forecastResult);
-                dbContext.SaveChanges();
+                using (ProjectsContext dbContext = new ProjectsContext(new DbContextOptionsBuilder<ProjectsContext>().UseSqlServer(ProjectsConnectionString).Options))
+                {
+                    var forecastResult = new CityForecast();
+                    forecastResult.RecordEntryDate = DateTime.UtcNow;
+                    forecastResult.RecordLastDate = DateTime.UtcNow;
+                    forecastResult.RecordStatus = "Live";
+                    forecastResult.Json = JsonConvert.SerializeObject(forecastResults);
+                    dbContext.CityForecasts.Add(forecastResult);
+                    dbContext.SaveChanges();
+
+
+                   //TO DO PosDTO return to console
+
+                }
 
             }
-
             return forecastResults;
 
         }

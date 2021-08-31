@@ -1,3 +1,8 @@
+/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.csproj.AssemblyReference.cache
+/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.AssemblyInfoInputs.cache
+/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.AssemblyInfo.cs
+/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.csproj.CoreCompileInputs.cache
 /Volumes/Tier 1/Projects/bin/Debug/net5.0/Projects.deps.json
 /Volumes/Tier 1/Projects/bin/Debug/net5.0/Projects.runtimeconfig.json
 /Volumes/Tier 1/Projects/bin/Debug/net5.0/Projects.runtimeconfig.dev.json
@@ -85,10 +90,6 @@
 /Volumes/Tier 1/Projects/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
 /Volumes/Tier 1/Projects/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
 /Volumes/Tier 1/Projects/bin/Debug/net5.0/runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll
-/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.GeneratedMSBuildEditorConfig.editorconfig
-/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.AssemblyInfoInputs.cache
-/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.AssemblyInfo.cs
-/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.csproj.CoreCompileInputs.cache
 /Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.csproj.CopyComplete
 /Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.dll
 /Volumes/Tier 1/Projects/obj/Debug/net5.0/ref/Projects.dll

@@ -22,7 +22,6 @@ namespace Projects.EFCore.Data
         public virtual DbSet<CitySearchZip> CitySearchZips { get; set; }
         public virtual DbSet<CitySearchZipView> CitySearchZipViews { get; set; }
 
-       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

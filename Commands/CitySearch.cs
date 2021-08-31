@@ -45,7 +45,7 @@ namespace Projects.Commands
            
 
         //Invoke AccuWeather API to GET the CityDetails
-        PostDTOModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
+        PostDTOCityDetailsModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
         String m = (String.Concat("CityKey", cityResult.CityKey,"\n City:", cityResult.City, "\n State:", cityResult.StateCode, "\n ZipCode:", cityResult.ZipCode, "\n Country:", cityResult.CountryCode));
 
         Console.WriteLine(m);

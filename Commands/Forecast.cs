@@ -68,7 +68,7 @@ namespace Projects.Commands
         {
 
             //Gets from CitySearchService the CityDetails.
-            PostDTOModel cityDetails = citySearchService.GetCitySearchResponseAsync(cityZipCode);
+            PostDTOCityDetailsModel cityDetails = citySearchService.GetCitySearchResponseAsync(cityZipCode);
 
             ForecastRootObject forecast = forecastService.GetForecastAsync(cityDetails.CityKey, days);
 

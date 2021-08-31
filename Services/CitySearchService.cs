@@ -39,17 +39,17 @@ namespace Projects.Services
 
         }
 
-        public PostDTOModel GetCitySearchResponseAsync(string cityZipCode)
+        public PostDTOCityDetailsModel GetCitySearchResponseAsync(string cityZipCode)
         {
 
             //Check if CityDetails exist in DB
-            PostDTOModel cityDetails = new PostDTOModel();
+            PostDTOCityDetailsModel cityDetails = new PostDTOCityDetailsModel();
 
             cityDetails = GetCityDetails(cityZipCode);
 
 
             //Checks if city exist in DB...
-            if (cityDetails.CityKey.Count() == 0)
+            if (cityDetails.CityKey is  null)
             {
                 //city doesn't exist then invoke Accuweather API
                 List<RootObject> cityResults = new List<RootObject>();
@@ -93,17 +93,17 @@ namespace Projects.Services
 
 
         }
-        public PostDTOModel GetCityDetails(string CityZipCode)
+        public PostDTOCityDetailsModel GetCityDetails(string CityZipCode)
         {
 
-            PostDTOModel result = new PostDTOModel();
+            PostDTOCityDetailsModel result = new PostDTOCityDetailsModel();
 
             using (ProjectsContext dbContext = new ProjectsContext(new DbContextOptionsBuilder<ProjectsContext>().UseSqlServer(ProjectsConnectionString).Options))
             {
                 {
                     var cityDetails = dbContext.CitySearchZipViews
                             .Where(b => b.ZipCode == CityZipCode)
-                            .Select(p => new PostDTOModel
+                            .Select(p => new PostDTOCityDetailsModel
                             {
                                 CityKey = p.CityKey
                                 ,
