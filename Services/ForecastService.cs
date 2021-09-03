@@ -4,17 +4,14 @@ using Microsoft.Extensions.Configuration;
 using Projects.EFCore.Data;
 using Projects.Models;
 using Projects.Helper;
-using Microsoft.EntityFrameworkCore;
-using Projects.EFCore.Models;
-using Newtonsoft.Json;
 
 namespace Projects.Services
 {
-    class ForecastService : RestAPIClient
+     class ForecastService : RestAPIClient
     {
         private readonly IConfiguration _configuration;
         public IConfigurationSection serviceConfigurations;
-        public string ProjectsConnectionString = string.Empty;
+        private readonly ProjectsContext dbContext = new ProjectsContext();
 
         public ForecastService(IConfiguration configuration)
         {
@@ -25,20 +22,25 @@ namespace Projects.Services
             {
 
                 serviceConfigurations = _configuration.GetSection("AccuWeatherAPIs");
+<<<<<<< HEAD
                 ProjectsConnectionString = configuration.GetConnectionString("ProjectsDB");
+=======
+
+
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
             }
 
 
         }
 
-        public ForecastRootObject GetForecastAsync(string cityCode, string days)
-        {
+        public List<ForecastRootObject> getForecastAsync(string days) {
 
-            ForecastRootObject forecastResults = new ForecastRootObject();
+            List<ForecastRootObject> result = new List<ForecastRootObject>();
 
             string key = serviceConfigurations.GetValue<string>("key");
             string baseAddress = serviceConfigurations.GetValue<string>("baseAddress");
             string version = serviceConfigurations.GetSection("forecast").GetValue<string>("version");
+<<<<<<< HEAD
             
             /*
              * uri is typically refered to as the whole request. so baseaddress/apiaddress?parameters
@@ -78,7 +80,18 @@ namespace Projects.Services
 
             }
             return forecastResults;
+=======
+            string uri = string.Concat("forecast/", version, serviceConfigurations.GetSection("daily").GetValue<string>(String.Concat(days,"day")));
+
+            string apiAddress = baseAddress;
+            string parameters = String.Concat("/", uri,"{citycode}", "?apikey=", key);
+
+            result = GetRestAPIClient<ForecastRootObject>(apiAddress, parameters);
+
+            return result;
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 
         }
+       
     }
 }

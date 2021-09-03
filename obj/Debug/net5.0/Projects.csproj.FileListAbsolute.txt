@@ -192,3 +192,4 @@ E:/Coding/GitHub/RubensProject/obj/Debug/net5.0/Projects.genruntimeconfig.cache
 /Volumes/Tier 1/Projects/obj/Debug/net5.0/ref/Projects.dll
 /Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.pdb
 /Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.genruntimeconfig.cache
+/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.csproj.AssemblyReference.cache

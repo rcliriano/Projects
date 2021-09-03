@@ -5,40 +5,34 @@ using Microsoft.Extensions.Configuration;
 using Projects.Helper;
 using Projects.Models.CitySearchModel;
 using System.Collections.Generic;
-using Projects.Models;
-using Projects.EFCore.Data;
-using System.Linq;
-using Projects.EFCore.Models;
-using Newtonsoft.Json;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace Projects.Services
 {
-    class CitySearchService : RestAPIClient
+     class CitySearchService: RestAPIClient
 
     {
 
         private readonly IConfiguration _configuration;
         public IConfigurationSection serviceConfigurations;
-        public string ProjectsConnectionString = string.Empty;
+     
 
-
-        public CitySearchService(IConfiguration configuration)
-        {
+        public CitySearchService(IConfiguration configuration) {
 
             _configuration = configuration;
 
-
-            if (configuration != null)
+            if(configuration != null)
             {
+               
                 serviceConfigurations = _configuration.GetSection("AccuWeatherAPIs");
-                ProjectsConnectionString = configuration.GetConnectionString("ProjectsDB");
+
+
             }
-
-
+            
 
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// if you do "///" above a function then it will auto generate the documentation structure and will show up when you hover over the method when called from another class.
         /// Hover over GetForecastAsync in line 74 in Forecast.cs to see.
@@ -51,15 +45,14 @@ namespace Projects.Services
 
             //Check if CityDetails exist in DB
             PostDTOCityDetailsModel cityDetails = new PostDTOCityDetailsModel();
+=======
+        public List <RootObject> GetCitySearchResponseAsync(string zipCode){
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 
-            cityDetails = GetCityDetails(cityZipCode);
+            
+            List<RootObject> result = new List<RootObject>();
 
-
-            //Checks if city exist in DB...
-            if (cityDetails.CityKey.Count() == 0)
-            {
-                //city doesn't exist then invoke Accuweather API
-                List<RootObject> cityResults = new List<RootObject>();
+           
 
                 string key = serviceConfigurations.GetValue<string>("key");
                 string baseAddress = serviceConfigurations.GetValue<string>("baseAddress");
@@ -75,6 +68,7 @@ namespace Projects.Services
 
                 //why duplicate variable? - NB
                 string apiAddress = baseAddress;
+<<<<<<< HEAD
 
                 /*
                  * can use string interpolation to make parameters
@@ -84,36 +78,15 @@ namespace Projects.Services
                  * -NB
                  */
                 string parameters = String.Concat("/", uri, "apikey=", key, "&q=", cityZipCode, "\"");
+=======
+                string parameters = String.Concat("/", uri, "apikey=", key, "&q=", zipCode, "\"");
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 
                 //string apiAddress = String.Concat("/", uri, "?", "apikey=", key, "&q=Tampa&alias=Florida");
-                cityResults = GetRestAPIClient<RootObject>(apiAddress, parameters);
-
-                foreach (RootObject cityResult in cityResults)
-                {
+                result = GetRestAPIClient<RootObject>(apiAddress, parameters);
 
 
-                    using (ProjectsContext dbContext = new ProjectsContext(new DbContextOptionsBuilder<ProjectsContext>().UseSqlServer(ProjectsConnectionString).Options))
-                    {
-                        var cityZip = new CitySearchZip();
-                        cityZip.RecordEntryDate = DateTime.UtcNow;
-                        cityZip.RecordLastDate = DateTime.UtcNow;
-                        cityZip.RecordStatus = "Live";
-                        cityZip.Json = JsonConvert.SerializeObject(cityResult);
-                        dbContext.CitySearchZips.Add(cityZip);
-                        dbContext.SaveChanges();
-                        Console.WriteLine(String.Concat("Zip code ", cityZipCode, "found and stored in the database."));
-                    }
-                }
-
-                //New city entered to DB. Now we get the details of it.
-                cityDetails = GetCityDetails(cityZipCode);
-
-            }
-
-            return cityDetails;
-
-
-
+<<<<<<< HEAD
 
         }
         public PostDTOCityDetailsModel GetCityDetails(string CityZipCode)
@@ -154,12 +127,16 @@ namespace Projects.Services
 
 
                 }
+=======
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
                 return result;
+            
+            
 
-            }
-
-
+            
         }
 
+   
     }
+
 }

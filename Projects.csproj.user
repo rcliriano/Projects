@@ -2,7 +2,11 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <StartAction>Project</StartAction>
+<<<<<<< HEAD
     <StartArguments>"Forecast" "-ZC" "33805" "-D" "1"</StartArguments>
+=======
+    <StartArguments>"CitySearch" "--ZipCode" "10453"</StartArguments>
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
     <StartWorkingDirectory></StartWorkingDirectory>
     <ExternalConsole>true</ExternalConsole>
     <ConsolePause>true</ConsolePause>

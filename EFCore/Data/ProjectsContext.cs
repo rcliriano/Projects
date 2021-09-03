@@ -18,38 +18,17 @@ namespace Projects.EFCore.Data
         {
         }
 
-        public virtual DbSet<CityForecast> CityForecasts { get; set; }
         public virtual DbSet<CitySearchZip> CitySearchZips { get; set; }
         public virtual DbSet<CitySearchZipView> CitySearchZipViews { get; set; }
 
+<<<<<<< HEAD
+=======
+        
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
-            modelBuilder.Entity<CityForecast>(entity =>
-            {
-                entity.HasKey(e => e.RecordId);
-
-                entity.ToTable("CityForecast");
-
-                entity.Property(e => e.RecordId).HasColumnName("RecordID");
-
-                entity.Property(e => e.Json).HasColumnName("JSON");
-
-                entity.Property(e => e.RecordEntryDate)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.RecordLastDate)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.RecordStatus)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasDefaultValueSql("('Live')");
-            });
 
             modelBuilder.Entity<CitySearchZip>(entity =>
             {
