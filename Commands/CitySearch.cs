@@ -37,6 +37,7 @@ namespace Projects.Commands
 
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
         
     /// <summary>
@@ -52,6 +53,13 @@ namespace Projects.Commands
                 dbContext = _dbContext;
             }
 
+=======
+            if (_dbContext != null)
+            {
+                dbContext = _dbContext;
+            }
+
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
         }
         /// <summary>
         /// Runs the AccuWeather API and outputs the result of the citysearchAPI
@@ -59,15 +67,19 @@ namespace Projects.Commands
         /// <param name="app"></param>
      
         [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
+<<<<<<< HEAD
 >>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 =======
     [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
 >>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
+=======
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
         [Required]
         public string CityZipCode { get; }
         protected override  void OnExecuteAsync(CommandLineApplication app)
         {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 <<<<<<< HEAD
@@ -78,12 +90,21 @@ namespace Projects.Commands
         PostDTOModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
         String m = (String.Concat("CityKey", cityResult.CityKey,"\n City:", cityResult.City, "\n State:", cityResult.StateCode, "\n ZipCode:", cityResult.ZipCode, "\n Country:", cityResult.CountryCode));
 >>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
+=======
+            using (dbContext)
+            {
+                var cityZipCode = dbContext.CitySearchZipViews
+                        .Where(b => b.ZipCode == CityZipCode);
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 
-        Console.WriteLine(m);
-               
-                
-            
+                if ((cityZipCode.Count() > 0))
+                {
+                    cityZipCode.ToString();
+                   
+                    Console.WriteLine(String.Concat("Zip code ", CityZipCode, " already found."));
+                }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             return;
 =======
@@ -126,6 +147,31 @@ namespace Projects.Commands
                             Console.WriteLine(String.Concat("Zip code ", CityZipCode, "found and stored in the database."));
 
 
+=======
+                else
+                {
+
+                    List<RootObject> cityResults = service.GetCitySearchResponseAsync(CityZipCode);
+
+
+                    Console.WriteLine(String.Concat("Searching zip code ", CityZipCode));
+                    foreach (RootObject cityResult in cityResults)
+                    {
+
+
+                        using (dbContext)
+                        {
+                            var cityZip = new CitySearchZip();
+                            cityZip.RecordEntryDate = DateTime.UtcNow;
+                            cityZip.RecordLastDate = DateTime.UtcNow;
+                            cityZip.RecordStatus = "Live";
+                            cityZip.Json = JsonConvert.SerializeObject(cityResult);
+                            dbContext.CitySearchZips.Add(cityZip);
+                            dbContext.SaveChanges();
+                            Console.WriteLine(String.Concat("Zip code ", CityZipCode, "found and stored in the database."));
+
+
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
                         }
                        
 

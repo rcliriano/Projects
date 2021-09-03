@@ -6537,10 +6537,14 @@
       ],
       "configFilePaths": [
 <<<<<<< HEAD
+<<<<<<< HEAD
         "/Users/liriano/.config/NuGet/NuGet.Config"
 =======
         "/Users/liriano/.nuget/NuGet/NuGet.Config"
 >>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
+=======
+        "/Users/liriano/.config/NuGet/NuGet.Config"
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
       ],
       "originalTargetFrameworks": [
         "net5.0"

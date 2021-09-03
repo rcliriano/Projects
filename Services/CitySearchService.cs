@@ -34,6 +34,7 @@ namespace Projects.Services
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         /// <summary>
         /// if you do "///" above a function then it will auto generate the documentation structure and will show up when you hover over the method when called from another class.
         /// Hover over GetForecastAsync in line 74 in Forecast.cs to see.
@@ -52,6 +53,9 @@ namespace Projects.Services
 =======
         public List <RootObject> GetCitySearchResponseAsync(string zipCode){
 >>>>>>> parent of e2e054d (CitySearchService and ForecastService)
+=======
+        public List <RootObject> GetCitySearchResponseAsync(string zipCode){
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 
             
             List<RootObject> result = new List<RootObject>();
@@ -64,6 +68,7 @@ namespace Projects.Services
                 string uri = string.Concat("locations/", version, serviceConfigurations.GetSection("locations").GetValue<string>("CitySearch"));
 
                 string apiAddress = baseAddress;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -80,11 +85,15 @@ namespace Projects.Services
 =======
                 string parameters = String.Concat("/", uri, "apikey=", key, "&q=", zipCode, "\"");
 >>>>>>> parent of e2e054d (CitySearchService and ForecastService)
+=======
+                string parameters = String.Concat("/", uri, "apikey=", key, "&q=", zipCode, "\"");
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 
                 //string apiAddress = String.Concat("/", uri, "?", "apikey=", key, "&q=Tampa&alias=Florida");
                 result = GetRestAPIClient<RootObject>(apiAddress, parameters);
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
         }
@@ -125,6 +134,8 @@ namespace Projects.Services
 
 
                 }
+=======
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 =======
 >>>>>>> parent of e2e054d (CitySearchService and ForecastService)
                 return result;

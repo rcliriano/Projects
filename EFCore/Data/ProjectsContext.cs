@@ -22,6 +22,10 @@ namespace Projects.EFCore.Data
         public virtual DbSet<CitySearchZipView> CitySearchZipViews { get; set; }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 =======
         
 >>>>>>> parent of e2e054d (CitySearchService and ForecastService)

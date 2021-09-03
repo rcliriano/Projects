@@ -193,6 +193,10 @@ E:/Coding/GitHub/RubensProject/obj/Debug/net5.0/Projects.genruntimeconfig.cache
 /Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.pdb
 /Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.genruntimeconfig.cache
 <<<<<<< HEAD
+<<<<<<< HEAD
 /Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.csproj.AssemblyReference.cache
 =======
 >>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
+=======
+/Volumes/Tier 1/Projects/obj/Debug/net5.0/Projects.csproj.AssemblyReference.cache
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)

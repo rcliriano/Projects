@@ -50,6 +50,7 @@ namespace Projects.Commands
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         //should add ErrorMessage Attribute to the "Required" data annotation 
 =======
     
@@ -59,6 +60,20 @@ namespace Projects.Commands
         public string cityZipCode { get; }
 
         [Required]
+=======
+        [Option("-C|--City", Description = "City to get Forecast in days")]
+        public string city {get;}
+
+        [Option("-S|--State", Description = "State to get Forecast in days")]
+        public string state { get; }
+
+        [Option("-C|--Country", Description = "State to get Forecast in days")]
+        public string country { get; }
+
+        [Option("-ZC|--ZipCode", Description = "State to get Forecast in days")]
+        public string zipCode { get; }
+
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 =======
         [Option("-C|--City", Description = "City to get Forecast in days")]
         public string city {get;}
@@ -99,8 +114,11 @@ namespace Projects.Commands
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             //Gets from CitySearchService the CityDetails.
             PostDTOCityDetailsModel cityDetails = citySearchService.GetCitySearchResponseAsync(cityZipCode);
+=======
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 =======
 >>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 

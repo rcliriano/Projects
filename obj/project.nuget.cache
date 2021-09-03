@@ -1,10 +1,14 @@
 {
   "version": 2,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "dgSpecHash": "kXhVuPkjUOTNig91CJqrMKngTYxHcRJ7FuYlagv43zvrvcwoqoQCOzmkpUMG2Hbs9owoDGYXIRRlinXneBGgNw==",
 =======
   "dgSpecHash": "LYhLa55ZCIDFGXU7Wx+1sHaRX1hFjP/JwoPtuqgBDLK9CeEHxfRxlFOX/ZEOkLgwWlFr78vR/ofRHzjEtOPnqw==",
 >>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
+=======
+  "dgSpecHash": "kXhVuPkjUOTNig91CJqrMKngTYxHcRJ7FuYlagv43zvrvcwoqoQCOzmkpUMG2Hbs9owoDGYXIRRlinXneBGgNw==",
+>>>>>>> parent of e2e054d (CitySearchService and ForecastService)
   "success": true,
   "projectFilePath": "/Volumes/Tier 1/Projects/Projects.csproj",
   "expectedPackageFiles": [
