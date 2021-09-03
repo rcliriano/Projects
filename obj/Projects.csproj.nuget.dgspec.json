@@ -1,32 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Coding\\GitHub\\RubensProject\\Projects.csproj": {}
+    "/Volumes/Tier 1/Projects/Projects.csproj": {}
   },
   "projects": {
-    "E:\\Coding\\GitHub\\RubensProject\\Projects.csproj": {
+    "/Volumes/Tier 1/Projects/Projects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Coding\\GitHub\\RubensProject\\Projects.csproj",
+        "projectUniqueName": "/Volumes/Tier 1/Projects/Projects.csproj",
         "projectName": "Projects",
-        "projectPath": "E:\\Coding\\GitHub\\RubensProject\\Projects.csproj",
-        "packagesPath": "C:\\Users\\Noah\\.nuget\\packages\\",
-        "outputPath": "E:\\Coding\\GitHub\\RubensProject\\obj\\",
+        "projectPath": "/Volumes/Tier 1/Projects/Projects.csproj",
+        "packagesPath": "/Users/liriano/.nuget/packages/",
+        "outputPath": "/Volumes/Tier 1/Projects/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Noah\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/liriano/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -117,7 +113,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }

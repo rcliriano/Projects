@@ -43,10 +43,10 @@ namespace Projects.Commands
         public string CityZipCode { get; }
         protected override void OnExecuteAsync(CommandLineApplication app)
         {
-           
+
 
             //Invoke AccuWeather API to GET the CityDetails
-            PostDTOModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
+            PostDTOCityDetailsModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
 
             //Try using string interpolation to concat combine strings. - NB
             String m = (String.Concat("CityKey", cityResult.CityKey,"\n City:", cityResult.City, "\n State:", cityResult.StateCode, "\n ZipCode:", cityResult.ZipCode, "\n Country:", cityResult.CountryCode));

@@ -46,11 +46,11 @@ namespace Projects.Services
         /// </summary>
         /// <param name="cityZipCode">The Zipcode of the city being requested</param>
         /// <returns>Accuweathers API details on the city requested</returns>
-        public PostDTOModel GetCitySearchResponseAsync(string cityZipCode)
+        public PostDTOCityDetailsModel GetCitySearchResponseAsync(string cityZipCode)
         {
 
             //Check if CityDetails exist in DB
-            PostDTOModel cityDetails = new PostDTOModel();
+            PostDTOCityDetailsModel cityDetails = new PostDTOCityDetailsModel();
 
             cityDetails = GetCityDetails(cityZipCode);
 
@@ -116,17 +116,17 @@ namespace Projects.Services
 
 
         }
-        public PostDTOModel GetCityDetails(string CityZipCode)
+        public PostDTOCityDetailsModel GetCityDetails(string CityZipCode)
         {
 
-            PostDTOModel result = new PostDTOModel();
+            PostDTOCityDetailsModel result = new PostDTOCityDetailsModel();
 
             using (ProjectsContext dbContext = new ProjectsContext(new DbContextOptionsBuilder<ProjectsContext>().UseSqlServer(ProjectsConnectionString).Options))
             {
                 {
                     var cityDetails = dbContext.CitySearchZipViews
                             .Where(b => b.ZipCode == CityZipCode)
-                            .Select(p => new PostDTOModel
+                            .Select(p => new PostDTOCityDetailsModel
                             {
                                 CityKey = p.CityKey
                                 ,
