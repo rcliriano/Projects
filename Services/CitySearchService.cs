@@ -33,6 +33,7 @@ namespace Projects.Services
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /// <summary>
         /// if you do "///" above a function then it will auto generate the documentation structure and will show up when you hover over the method when called from another class.
         /// Hover over GetForecastAsync in line 74 in Forecast.cs to see.
@@ -41,6 +42,9 @@ namespace Projects.Services
         /// <param name="cityZipCode">The Zipcode of the city being requested</param>
         /// <returns>Accuweathers API details on the city requested</returns>
         public PostDTOCityDetailsModel GetCitySearchResponseAsync(string cityZipCode)
+=======
+        public PostDTOModel GetCitySearchResponseAsync(string cityZipCode)
+>>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
         {
 
             //Check if CityDetails exist in DB
@@ -57,17 +61,10 @@ namespace Projects.Services
                 string key = serviceConfigurations.GetValue<string>("key");
                 string baseAddress = serviceConfigurations.GetValue<string>("baseAddress");
                 string version = serviceConfigurations.GetSection("locations").GetValue<string>("version");
-
-
-                /*
-                 * should store CitySearch in its own variable
-                 * can store the citysearch apiaddress as /locations/{0}/cities/US/search then use string.Format to input values
-                 * -NB
-                 */
                 string uri = string.Concat("locations/", version, serviceConfigurations.GetSection("locations").GetValue<string>("CitySearch"));
 
-                //why duplicate variable? - NB
                 string apiAddress = baseAddress;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
                 /*
@@ -77,6 +74,8 @@ namespace Projects.Services
                  * parameters = ?apikey=<key>&q=<zipcode> 
                  * -NB
                  */
+=======
+>>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
                 string parameters = String.Concat("/", uri, "apikey=", key, "&q=", cityZipCode, "\"");
 =======
                 string parameters = String.Concat("/", uri, "apikey=", key, "&q=", zipCode, "\"");
@@ -112,7 +111,6 @@ namespace Projects.Services
                                 ZipCode = p.ZipCode
                             });
 
-                    //should only be grabbing one city per zipcode. No need for a foreach
                     foreach (var cityDetail in cityDetails)
                     {
                         if ((cityDetail.CityKey.Count() > 0))

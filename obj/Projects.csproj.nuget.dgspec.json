@@ -17,7 +17,11 @@
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "/Users/liriano/.config/NuGet/NuGet.Config"
+=======
+          "/Users/liriano/.nuget/NuGet/NuGet.Config"
+>>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
         ],
         "originalTargetFrameworks": [
           "net5.0"

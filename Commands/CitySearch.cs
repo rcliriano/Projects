@@ -39,12 +39,12 @@ namespace Projects.Commands
 <<<<<<< HEAD
         }
         
-        /// <summary>
-        /// Runs the AccuWeather API and outputs the result of the citysearchAPI
-        /// </summary>
-        /// <param name="app"></param>
-        [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
+    /// <summary>
+    /// Runs the AccuWeather API and outputs the result of the citysearchAPI
+    /// </summary>
+    /// <param name="app"></param>
 
+<<<<<<< HEAD
         //should add the "ErrorMessage" attribute to the "Required" data annotation. - NB
 =======
             if (_dbContext != null)
@@ -60,6 +60,9 @@ namespace Projects.Commands
      
         [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
 >>>>>>> parent of e2e054d (CitySearchService and ForecastService)
+=======
+    [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
+>>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
         [Required]
         public string CityZipCode { get; }
         protected override  void OnExecuteAsync(CommandLineApplication app)
@@ -67,23 +70,30 @@ namespace Projects.Commands
 
 <<<<<<< HEAD
 
+<<<<<<< HEAD
             //Invoke AccuWeather API to GET the CityDetails
             PostDTOCityDetailsModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
+=======
+        //Invoke AccuWeather API to GET the CityDetails
+        PostDTOModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
+        String m = (String.Concat("CityKey", cityResult.CityKey,"\n City:", cityResult.City, "\n State:", cityResult.StateCode, "\n ZipCode:", cityResult.ZipCode, "\n Country:", cityResult.CountryCode));
+>>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
 
-            //Try using string interpolation to concat combine strings. - NB
-            String m = (String.Concat("CityKey", cityResult.CityKey,"\n City:", cityResult.City, "\n State:", cityResult.StateCode, "\n ZipCode:", cityResult.ZipCode, "\n Country:", cityResult.CountryCode));
-
-            Console.WriteLine(m);
+        Console.WriteLine(m);
                
                 
             
 
+<<<<<<< HEAD
             return;
 =======
             using (dbContext)
             {
                 var cityZipCode = dbContext.CitySearchZipViews
                         .Where(b => b.ZipCode == CityZipCode);
+=======
+        return;
+>>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
 
                 if ((cityZipCode.Count() > 0))
                 {

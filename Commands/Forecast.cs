@@ -49,12 +49,15 @@ namespace Projects.Commands
         /// <param name="app"></param>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //should add ErrorMessage Attribute to the "Required" data annotation 
+=======
+    
+>>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
         [Required]
         [Option("-ZC|--ZipCode", Description = "Get Forecast Details for the entered zipcode")]
         public string cityZipCode { get; }
 
-        //should add ErrorMessage Attribute to the "Required" data annotation -NB
         [Required]
 =======
         [Option("-C|--City", Description = "City to get Forecast in days")]
