@@ -51,10 +51,14 @@ namespace Projects.Commands
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         //should add ErrorMessage Attribute to the "Required" data annotation 
 =======
     
 >>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
+=======
+    
+>>>>>>> parent of 1b4cd3d (Merge branch 'NoahsCommentBranch' into master)
         [Required]
         [Option("-ZC|--ZipCode", Description = "Get Forecast Details for the entered zipcode")]
         public string cityZipCode { get; }

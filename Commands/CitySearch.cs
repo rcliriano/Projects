@@ -46,6 +46,7 @@ namespace Projects.Commands
     /// <param name="app"></param>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //should add the "ErrorMessage" attribute to the "Required" data annotation. - NB
 =======
             if (_dbContext != null)
@@ -74,11 +75,15 @@ namespace Projects.Commands
 >>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
 =======
 >>>>>>> parent of e2e054d (CitySearchService and ForecastService)
+=======
+    [Option("-ZC|--ZipCode", Description = "Search for a AccuWeater City Key using Zip Code")]
+>>>>>>> parent of 1b4cd3d (Merge branch 'NoahsCommentBranch' into master)
         [Required]
         public string CityZipCode { get; }
         protected override  void OnExecuteAsync(CommandLineApplication app)
         {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -128,6 +133,18 @@ namespace Projects.Commands
 >>>>>>> parent of e2e054d (CitySearchService and ForecastService)
 
                     List<RootObject> cityResults = service.GetCitySearchResponseAsync(CityZipCode);
+=======
+        //Invoke AccuWeather API to GET the CityDetails
+        PostDTOModel cityResult = service.GetCitySearchResponseAsync(CityZipCode);
+        String m = (String.Concat("CityKey", cityResult.CityKey,"\n City:", cityResult.City, "\n State:", cityResult.StateCode, "\n ZipCode:", cityResult.ZipCode, "\n Country:", cityResult.CountryCode));
+
+        Console.WriteLine(m);
+               
+                
+            
+
+        return;
+>>>>>>> parent of 1b4cd3d (Merge branch 'NoahsCommentBranch' into master)
 
 
                     Console.WriteLine(String.Concat("Searching zip code ", CityZipCode));

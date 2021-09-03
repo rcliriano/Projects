@@ -19,6 +19,7 @@
         "configFilePaths": [
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           "/Users/liriano/.config/NuGet/NuGet.Config"
 =======
           "/Users/liriano/.nuget/NuGet/NuGet.Config"
@@ -26,6 +27,9 @@
 =======
           "/Users/liriano/.config/NuGet/NuGet.Config"
 >>>>>>> parent of e2e054d (CitySearchService and ForecastService)
+=======
+          "/Users/liriano/.nuget/NuGet/NuGet.Config"
+>>>>>>> parent of 1b4cd3d (Merge branch 'NoahsCommentBranch' into master)
         ],
         "originalTargetFrameworks": [
           "net5.0"

@@ -46,6 +46,7 @@ namespace Projects.Services
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             
             /*
              * uri is typically refered to as the whole request. so baseaddress/apiaddress?parameters
@@ -54,6 +55,8 @@ namespace Projects.Services
              */
 =======
 >>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
+=======
+>>>>>>> parent of 1b4cd3d (Merge branch 'NoahsCommentBranch' into master)
             string uri = string.Concat("forecasts/", version, "/daily/", days, "day/");
 
             string apiAddress = baseAddress;

@@ -35,6 +35,7 @@ namespace Projects.Services
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         /// <summary>
         /// if you do "///" above a function then it will auto generate the documentation structure and will show up when you hover over the method when called from another class.
         /// Hover over GetForecastAsync in line 74 in Forecast.cs to see.
@@ -44,6 +45,8 @@ namespace Projects.Services
         /// <returns>Accuweathers API details on the city requested</returns>
         public PostDTOCityDetailsModel GetCitySearchResponseAsync(string cityZipCode)
 =======
+=======
+>>>>>>> parent of 1b4cd3d (Merge branch 'NoahsCommentBranch' into master)
         public PostDTOModel GetCitySearchResponseAsync(string cityZipCode)
 >>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
         {
@@ -71,6 +74,7 @@ namespace Projects.Services
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                 /*
                  * can use string interpolation to make parameters
@@ -81,6 +85,8 @@ namespace Projects.Services
                  */
 =======
 >>>>>>> parent of 64b771f (Added comments/ideas for Ruben)
+=======
+>>>>>>> parent of 1b4cd3d (Merge branch 'NoahsCommentBranch' into master)
                 string parameters = String.Concat("/", uri, "apikey=", key, "&q=", cityZipCode, "\"");
 =======
                 string parameters = String.Concat("/", uri, "apikey=", key, "&q=", zipCode, "\"");
